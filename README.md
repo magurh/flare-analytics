@@ -30,11 +30,11 @@ Note: Staking is currently live only on Flare. The data of the FTSO providers fr
 
 
 Poetry is used for dependency management. Whenever new dependencies are added, run:
-```
+```bash
 poetry install
 ```
 To use Jupyter Lab, set the kernel to the flare-metrics environment created by poetry and run:
-```
+```bash
 poetry run python -m ipykernel install --user --name=flare-metrics
 poetry run jupyter lab
 ```
@@ -44,19 +44,19 @@ For simply activating the virtual environment, run `poetry shell`. To add new de
 ## Web scrapping
 
 There are two types of data that one can import: validator data which refers to the validator nodes on the P-chains, and FTSO data for the data providers on the C-chains. To import validator data, navigate to the root directory and run:
-```
+```bash
 poetry run collect-validators flare-metrics
 ```
 where in the above example flare-metrics is used as the source for the validator data. This will create a dataframe within the `data` sub-directory, with information about all current validators on Flare.
 
 For FTSO data, there are multiple available sources: [flaremetrics.io](flaremetrics.io), [Flare Systems Explorer](https://songbird-systems-explorer.flare.rocks/entities/ftsoDataProvider) (currently supporting only Songbird and testnets for FTSOv2), and [FTSO monitor](https://flare-ftso-monitor.flare.network/data-providers) for FTSOv1. Run one of the following from the root directory:
-```
+```bash
 poetry run collect-ftso <source> <network>
 ```
 Currently supported sources are `flare-metrics` and `sys-explorer`, with available networks `flr` and `sgb`.
 
 For FTSOv2, one can further uses the Flare Systems Explorer to extract data for a specific reward epoch by running -- check the [Systems Explorer](https://songbird-systems-explorer.flare.rocks/reward-epoch) for the desired epochs:
-```
+```bash
 poetry run collect-epoch 220
 ```
 
